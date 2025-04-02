@@ -1,5 +1,5 @@
 <?php
- session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -7,10 +7,10 @@
     <head>
         <title>{{$title}}</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+ 
 
         <style>
             /* Định dạng màu nền và màu chữ của menu */
@@ -64,18 +64,18 @@
                 <div class='container-fluid p-0'>
                     <div class='col-9 p-0'>
                             <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="{{url('sach')}}">Trang chủ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{url('sach/theloai/1')}}">Tiểu thuyết</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{url('sach/theloai/2')}}">Truyện ngắn - tản văn</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{url('sach/theloai/3')}}">Tác phẩm kinh điển</a>
-                                </li>
+                            <li class="nav-item active">
+          <a class="nav-link menu-the-loai" href="#" id_the_loai="">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link menu-the-loai" href="#" id_the_loai="1">Tiểu thuyết</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link menu-the-loai" href="#" id_the_loai="2">Truyện ngắn - tản văn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link menu-the-loai" href="#" id_the_loai="3">Tác phẩm kinh điển</a>
+        </li>
                             </ul>
                     </div>
                     <div style='color:white;position:relative' class='mr-2'>

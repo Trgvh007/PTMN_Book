@@ -40,6 +40,7 @@ class BookController extends Controller
     return "Thêm dữ liệu thành công";
    }
 
+   //////////////
    public function cartadd(Request $request)
    {
    $request->validate([
@@ -66,7 +67,7 @@ class BookController extends Controller
    session()->put("cart",$cart);
    return count($cart);
 }
-
+////////////
 public function order()
 {
 $cart=[];
@@ -93,6 +94,7 @@ $data = DB::table("sach")->whereRaw("id in (".$list_book.")")->get();
 return view("vidusach.order",compact("quantity","data"));
 }
 
+/////////////
 public function cartdelete(Request $request)
 {
 $request->validate([
@@ -147,8 +149,20 @@ session()->forget('cart');
 }
 return view("vidusach.order", compact('data','quantity'));
 
+}
 
+////////////
+public function bookview(Request $request)
+{
+$the_loai = $request->input("id_the_loai");
+$data = [];
+if($the_loai!="")
+$data = DB::select("select * from sach where id_the_loai = ?",[$the_loai]);
+else
+$data = DB::select("select * from sach order by gia_ban asc limit 0,10");
+return view("vidusach.bookview", compact("data"));
 
 }
+
 }
 
