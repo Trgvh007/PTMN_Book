@@ -15,11 +15,11 @@ height='200px'>
         Tác giả: <b> {{$row->tac_gia}}</b> <br>
         Hình thức bìa: <b>{{$row->hinh_thuc_bia}}</b>   
         <div class='mt-1'>
- Số lượng mua:
- <input type='number' id='product-number' size='5' min="1" value="1">
- <button class='btn btn-success btn-sm mb-1' id='add-to-cart'>Thêm vào giỏ hàng</button>
-</div>
-</div> 
+        Số lượng mua:
+        <input type='number' id='product-number' size='5' min="1" value="1">
+        <button class='btn btn-success btn-sm mb-1' id='add-to-cart' data-id="{{$row->id}}">Thêm vào giỏ hàng</button>
+        </div>
+        </div> 
 <br style="clear:both;">
     <div style='text-align:justify'>
               <b>Mô tả</b>:<br>
@@ -27,26 +27,22 @@ height='200px'>
             </div>
     </div>
   @endforeach
- 
-</x-book-layout>
-
-<script>
+  <script>
  $(document).ready(function(){
  $("#add-to-cart").click(function(){
 
- id = "{{$data->id}}";
- num = $("#product-number").val()
- $.ajax({
- type:"POST",
- dataType:"json",
- url: "{{route('cartadd')}}",
- data:{"_token": "{{ csrf_token() }}","id":id,"num":num},
- beforeSend:function(){
- },
+  id = $(this).data("id");
+  num = $("#product-number").val()
+  $.ajax({
+      type:"POST",
+      dataType:"json",
+      url: "{{route('cartadd')}}",
+      data:{"_token": "{{ csrf_token() }}","id":id,"num":num},
+      beforeSend:function(){
+      },
 
  success:function(data){
- Giá trị trang xử lý thêm 
-vào giỏ hàng trả về
+
  $("#cart-number-product").html(data);
  },
  error: function (xhr,status,error){
@@ -58,4 +54,7 @@ vào giỏ hàng trả về
  });
  
  </script>
+</x-book-layout>
+
+
 

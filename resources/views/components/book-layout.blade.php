@@ -1,3 +1,7 @@
+<?php
+ session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,6 +10,8 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <style>
             /* Định dạng màu nền và màu chữ của menu */
             .navbar {
@@ -35,6 +41,20 @@
                
                 color: black;
             }
+
+            .book
+            {
+            position:relative;
+            margin:10px;
+            text-align:center;
+            padding-bottom:35px;
+            }
+            .btn-add-product
+            { 
+            position:absolute;
+            bottom:0;
+            width:100%;
+            }
         </style>
     </head>
     <body>
@@ -58,6 +78,20 @@
                                 </li>
                             </ul>
                     </div>
+                    <div style='color:white;position:relative' class='mr-2'>
+        <div style='width:20px; height:20px;background-color:#23b85c; font-size:12px; border:none;
+        border-radius:50%; position:absolute;right:2px;top:-2px' id='cart-number-product'>
+        @if (session('cart'))
+        {{ count(session('cart')) }}
+        @else
+        0
+        @endif
+        </div>
+ 
+        <a href="{{route('order')}}" style='cursor:pointer;color:white;'>
+        <i class="fa fa-cart-arrow-down fa-2x mr-2 mt-2" aria-hidden="true"></i>
+        </a>
+        </div>
                     <div class='col-3 p-0 d-flex justify-content-end'>
                         @auth
                             <div class="dropdown">
@@ -83,20 +117,6 @@
                         @endauth
                 </div>
             </nav>
-            <div style='color:white;position:relative' class='mr-2'>
- <div style='width:20px; height:20px;background-color:#23b85c; font-size:12px; border:none;
- border-radius:50%; position:absolute;right:2px;top:-2px' id='cart-number-product'>
- @if (session('cart'))
- {{ count(session('cart')) }}
- @else
- 0
- @endif
- </div>
-
- <a href="{{route('order')}}" style='cursor:pointer;color:white;'>
- <i class="fa fa-cart-arrow-down fa-2x mr-2 mt-2" aria-hidden="true"></i>
- </a>
- </div>
         </header>
         <main style="width:1000px; margin:2px auto;">
             <div class='row'>

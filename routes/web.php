@@ -36,3 +36,5 @@ Route::post('/book/delete','App\Http\Controllers\LayoutController@bookdelete')->
 Route::post('/book/save/{action}','App\Http\Controllers\LayoutController@booksave')->middleware('auth')->name('booksave');
 Route::get('/order','App\Http\Controllers\BookController@order')->name('order');
 Route::post('/cart/add','App\Http\Controllers\BookController@cartadd')->name('cartadd');
+ Route::post('/cart/delete','App\Http\Controllers\BookController@cartdelete')->name('cartdelete');
+ Route::post('/order/create','App\Http\Controllers\BookController@ordercreate') ->middleware('auth')->name('ordercreate');
